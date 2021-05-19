@@ -20,6 +20,16 @@ resource "aws_instance" "web" {
     destination = "/tmp/webserver.sh"
   }
 
+  provisioner "file" {
+    source      = "credentials"
+    destination = "/tmp/credentials"
+  }
+
+  provisioner "file" {
+    source      = "config"
+    destination = "/tmp/config"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/webserver.sh",

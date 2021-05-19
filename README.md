@@ -28,7 +28,7 @@ What it does:
 
 USAGE:
 
-Create a `secret.tfvars` and add to it:
+1 - Create a `secret.tfvars` and add to it:
 
 
 ```Terraform
@@ -44,3 +44,6 @@ terraform init
 terraform plan -var-file="secret.tfvars"
 terraform apply -var-file="secret.tfvars"
 ```
+
+
+2 - Copy your `~/.aws/credentials` and `~/.aws/config`to the project root. Don't worry, they wont be uploaded to you Git Repo.
