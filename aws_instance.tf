@@ -29,7 +29,3 @@ resource "aws_instance" "web" {
   }
 
 }
-# # Provides an SSM Parameter data source (Ubuntu 18.04).
-# data "aws_ssm_parameter" "ubuntu-bionic" {
-#   name = "/aws/service/canonical/ubuntu/server/18.04/stable/current/amd64/hvm/ebs-gp2"
-# }

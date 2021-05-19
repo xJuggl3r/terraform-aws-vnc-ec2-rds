@@ -9,7 +9,7 @@ done
 
 echo "       __                    _ _____       "
 echo "__  __ \ \ _   _  __ _  __ _| |___ / _ __  "
-echo "\ \/ /  \ \ | | |/ _` |/ _` | | |_ \| '__| "
+echo "\ \/ /  \ \ | | |/ _` \/ _` | | |_ \| '__| "
 echo " >  </\_/ / |_| | (_| | (_| | |___) | |    "
 echo "/_/\_\___/ \__,_|\__, |\__, |_|____/|_|    "
 echo "                 |___/ |___/               "
@@ -34,6 +34,6 @@ pip3 install passlib
 sudo apt install awscli --yes
 
 
-
-# make sure nginx is started
-# service nginx start
+# TODO
+# Download data for migration 
+# 
