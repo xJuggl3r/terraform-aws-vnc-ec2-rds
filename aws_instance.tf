@@ -30,11 +30,15 @@ resource "aws_instance" "web" {
     destination = "/tmp/config"
   }
 
+  provisioner "file" {
+    source      = "dbpass"
+    destination = "/tmp/dbpass"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/webserver.sh",
-      "cd /tmp",
-      "sudo ./webserver.sh"
+      "sudo /tmp/webserver.sh"
     ]
   }
 

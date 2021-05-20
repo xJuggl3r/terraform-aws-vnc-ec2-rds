@@ -32,8 +32,34 @@ pip3 install flask_mysqldb
 pip3 install passlib
 
 sudo apt install awscli --yes
+sudo mkdir ~/.aws || sudo cp /tmp/credentials ~/.aws/credentials || sudo cp /tmp/config ~/.aws/config
+sudo rm /tmp/credentials /tmp/config
 
-
-# TODO
 # Download data for migration 
-# 
+aws s3 cp s3://bootcamp-aws/dump.sql
+aws s3 cp s3://bootcamp-aws/wikiapp.zip .
+
+# Get RDS Endpoint to connect and create mySQL DB
+aws rds describe-db-instances > /tmp/endpoint.json
+sudo touch /tmp/endpoint.txt
+rds==$(sudo cut -b 29-105 /tmp/endpoint.txt)
+
+dbpass=$(</tmp/dbpass)
+sudo rm /tmp/dbpass
+
+# Login to mySQL
+mysql -h $rds -P 3306 -u admin -p $dbpass
+
+#TODO
+# Create
+create database wikidb;
+use wikidb;
+source dump.sql;
+CREATE USER wiki@'%' IDENTIFIED BY 'admin123456';
+GRANT ALL PRIVILEGES ON wikidb.* TO wiki@'%';
+FLUSH PRIVILEGES;
+exit
+
+sudo unzip wikiapp.zip
+
+
