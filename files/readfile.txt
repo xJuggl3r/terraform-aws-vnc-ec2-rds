@@ -1,0 +1,3 @@
+with open('/tmp/end.txt','r') as file:
+    rds = file.read()
+endpoint = rds.rstrip()

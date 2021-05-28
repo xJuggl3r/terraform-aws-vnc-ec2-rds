@@ -8,6 +8,11 @@ resource "aws_instance" "web" {
   key_name                    = "automation"
   tags                        = { Name = var.app }
 
+  # Wait for RDS to be ready to deploy VM (in order to get RDS endpoint)
+  depends_on = [
+    aws_db_instance.default,
+  ]
+
   connection {
     type        = "ssh"
     host        = self.public_ip
@@ -21,18 +26,38 @@ resource "aws_instance" "web" {
   }
 
   provisioner "file" {
-    source      = "credentials"
+    source      = "./files/credentials"
     destination = "/tmp/credentials"
   }
 
   provisioner "file" {
-    source      = "config"
+    source      = "./files/config"
     destination = "/tmp/config"
   }
 
   provisioner "file" {
-    source      = "dbpass"
+    source      = "./files/client-config"
+    destination = "/tmp/client-config"
+  }
+
+  provisioner "file" {
+    source      = "./files/client-credentials"
+    destination = "/tmp/client-credentials"
+  }
+
+  provisioner "file" {
+    source      = "./files/dbpass"
     destination = "/tmp/dbpass"
+  }
+
+  provisioner "file" {
+    source      = "./files/dbbatch"
+    destination = "/tmp/dbbatch"
+  }
+
+  provisioner "file" {
+    source      = "./files/readfile.txt"
+    destination = "/tmp/readfile.txt"
   }
 
   provisioner "remote-exec" {

@@ -1,0 +1,7 @@
+create database wikidb;
+use wikidb;
+source dump.sql;
+CREATE USER wiki@'%' IDENTIFIED BY 'admin123456';
+GRANT ALL PRIVILEGES ON wikidb.* TO wiki@'%';
+FLUSH PRIVILEGES;
+exit
