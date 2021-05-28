@@ -48,7 +48,9 @@ terraform apply -var-file="secret.tfvars"
 
 2 - Copy your `~/.aws/credentials` and `~/.aws/config`to the project root. Don't worry, they wont be uploaded to your Git Repo.
 
-3 - Create afile `dbpass` with your db passwordon it. Don't worry, it wont be uploaded to your Git Repo.
+3 - Create afile `dbpass` with your db password on it. Don't worry, it wont be uploaded to your Git Repo.
+
+4 - Change dbbatch file to your user/pass and db.
 
 4 - Run
 ```Terraform
